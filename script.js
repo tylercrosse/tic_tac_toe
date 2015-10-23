@@ -1,20 +1,37 @@
 var clickCount = 0;
-var getVals = function() {
-  var row1 = [];
-  row1.push($("#e11").attr("class"));
-  row1.push($("#e13").attr("class"));
-  row1.push($("#e12").attr("class"));
-  console.log(row1);
+
+var indexArray = [
+  ["e11", "e12", "e13"],
+  ["e21", "e22", "e23"],
+  ["e31", "e32", "e33"],
+  ["e11", "e21", "e31"],
+  ["e12", "e22", "e32"],
+  ["e13", "e23", "e33"],
+  ["e11", "e22", "e33"],
+  ["e13", "e22", "e31"]
+];
+
+var getElementClass = function(element) {
+  return $("#" + element).attr("class");
+};
+
+var checkWinner = function () {
+  for (var i = 0; i < indexArray.length; i++) {
+    var resultsArray = indexArray[i].map(getElementClass);
+    resultsString = resultsArray.toString();
+    if (resultsString == "x,x,x") {
+      alert("X Won!");
+    } else if (resultsString == "o,o,o") {
+      alert("O Won!");
+    }
+  }
 };
 
 $(document).ready(function() {
 
-  // "__'s turn"
-
   $("td").on("click", function() {
     if (!$(this).hasClass("x") && !$(this).hasClass("o")) {
       clickCount++;
-      console.log(clickCount);
 
       //add something
       if (clickCount % 2 === 0) {
@@ -28,6 +45,7 @@ $(document).ready(function() {
         $("#whosturn").html("O's");
       }
     }
+    checkWinner();
   });
 
   //when you press reset remove class active from all td's

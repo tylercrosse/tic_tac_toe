@@ -1,0 +1,19 @@
+table,
+th,
+td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+table {
+  margin: 0 auto;
+}
+
+td {
+  height: 200px;
+  width: 200px;
+}
+
+.active {
+  background: #868686;
+}

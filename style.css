@@ -5,8 +5,12 @@ td {
   border-collapse: collapse;
 }
 
-table {
+.game {
   margin: 0 auto;
+}
+
+button {
+  text-align: center;
 }
 
 td {
